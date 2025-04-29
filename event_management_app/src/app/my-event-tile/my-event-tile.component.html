@@ -1,0 +1,9 @@
+<div class="card m-3" (click)="goToEvent()">
+    <img src="assets/events/{{eventPic}}" class="card-img-top" alt="..." height="175">
+    <div class="card-body">
+        <div class="date">
+            {{date | date }}
+        </div>
+      <h5 class="card-title">{{eventName}}</h5>
+    </div>
+</div>

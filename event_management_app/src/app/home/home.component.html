@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row my-3">
+        <app-feed-tile *ngFor="let event of events | paginate: { itemsPerPage:12, currentPage: p }" [ngClass]="{ 'col-lg-3 col-md-4 col-sm-6 col-xs-12': true }"
+        [eventId]="event.id" [eventName]="event.name" [eventOrganizer]="event.auther" [date]="event.start_date" [eventPic]="event.image"
+        [isFree]="event.is_free" [isOnline]="event.is_online" [price]="event.price"
+        ></app-feed-tile>
+
+        <div class="d-flex justify-content-center w-100">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+</div>

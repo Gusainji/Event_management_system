@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="mt-4">My Tickets</h2>
+            <div class="container">
+                <div class="row my-3">
+                    <h3 class="text-center" *ngIf="tickets.length == 0">You haven't enrolled into any events yet!</h3>
+                    <app-feed-tile *ngFor="let event of tickets"
+                        [ngClass]="{ 'col-lg-3 col-md-4 col-sm-6 col-xs-12': true }" [eventId]="event.id" [eventName]="event.name"
+                        [eventOrganizer]="event.auther" [date]="event.start_date" [eventPic]="event.image"
+                        [isFree]="event.is_free" [isOnline]="event.is_online" [price]="event.price"></app-feed-tile>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

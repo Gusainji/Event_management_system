@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <h2 class="mt-4">My Events</h2>
+            <div class="container">
+                <div class="row my-3">
+                    <h3 class="text-center" *ngIf="events.length == 0">You haven't created any events yet!</h3>
+                    <app-my-event-tile *ngFor="let event of events"
+                        [ngClass]="{ 'col-lg-3 col-md-4 col-sm-6 col-xs-12': true }" [eventId]="event.id" [eventName]="event.name"
+                        [eventOrganizer]="event.auther" [date]="event.start_date" [eventPic]="event.image"
+                        [isFree]="event.is_free" [isOnline]="event.is_online" [price]="event.price"></app-my-event-tile>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

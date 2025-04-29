@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="form">
+            <h1 class="text-center mb-3">Login</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="postData(loginForm)" autocomplete="off">
+                <div class="form-outline mb-4">
+                    <input type="text" class="form-control" placeholder="username" formControlName="username">
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="password" class="form-control" placeholder="password" formControlName="password">
+                </div>
+                <button type="submit" class="btn btn-success w-100">Login</button>
+            </form>
+            <hr>
+            <p class="text-center">New user? Click <a routerLink="/register" href="#" >Register</a></p>
+        </div>
+    </div>
+</div>

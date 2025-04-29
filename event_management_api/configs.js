@@ -1,0 +1,3 @@
+module.exports = {
+    SECRET_KEY: "c551031e4136ce0242c6d210c7a41bbfe8ed42fe20ad9c291c7c7ff0f98e872a7156eb9659a34543b7ecb35e65ce353f89a10b1bde77687380acc9b7fb4a6701"
+}

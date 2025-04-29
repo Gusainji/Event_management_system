@@ -1,0 +1,89 @@
+<app-title [title]="'Create Event'"></app-title>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <form class="mt-3" [formGroup]="eventForm" (ngSubmit)="postData(eventForm)" autocomplete="off">
+                <div class="form-outline mb-2">
+                    <div class="row">
+                        <div class="col">
+                            <label for="event_name">Event name</label>
+                            <input type="text" id="event_name" class="form-control" placeholder="Enter event name" formControlName="event_name">
+                        </div>
+                        <div class="col">
+                            <label for="category">Category</label>
+                            <select class="form-select" id="category" formControlName="category">
+                                <option *ngFor="let entry of categories" value="{{entry.id}}">{{entry.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-outline mb-2">
+                    <div class="row">
+                        <div class="col">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" placeholder="Enter description" id="description" formControlName="description"></textarea>
+                        </div>
+                        <div class="col">
+                            <label for="image">Cover</label>
+                            <div class="image-display" id="image">
+                                <p *ngIf="coverSet == 0">No cover added</p>
+                                <img *ngIf="coverSet == 1" [src]="cover.url" height="150">
+                            </div>
+                            <input type="file" class="form-control" id="image"  #selectFile (change)="onCoverSelect($event)">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-outline mb-2">
+                    <div class="row">
+                        <div class="col">
+                            <label for="start_date">Start date</label>
+                            <input type="date" class="form-control" id="start_date" formControlName="start_date">
+                        </div>
+                        <div class="col">
+                            <label for="end_date">End date</label>
+                            <input type="date" class="form-control" id="end_date" formControlName="end_date">
+                        </div>
+                        <div class="col">
+                            <label for="start_time">Start time</label>
+                            <input type="time" class="form-control" id="start_time" formControlName="start_time">
+                        </div>
+                        <div class="col">
+                            <label for="duration">Duration</label>
+                            <div class="input-group mb-3">
+                                <input type="number" class="form-control" id="duration" formControlName="duration">
+                                <span class="input-group-text" id="basic-addon2">minutes</span>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-outline mb-2">
+                    <div class="row">
+                        <div class="col">
+                            <label for="location">Location</label>
+                            <div class="wrapper">
+                                <input type="radio" name="is_online" id="online" value="true" formControlName="is_online"> Online
+                                <input type="radio" name="is_online" id="offline" value="false" formControlName="is_online"> Offline
+                            </div>
+                            <div class="input-group mb-3" *ngIf="eventForm.get('is_online')!.value == 'false'">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-location-dot"></i></span>
+                                <input type="text" class="form-control" placeholder="Enter location" id="location" formControlName="location">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="price">Price</label>
+                            <div class="wrapper">
+                                <input type="radio" name="is_free" id="free" value="true" formControlName="is_free"> Free
+                                <input type="radio" name="is_free" id="paid" value="false" formControlName="is_free"> Paid
+                            </div>
+                            <div class="input-group mb-3" *ngIf="eventForm.get('is_free')!.value == 'false'">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-indian-rupee-sign"></i></span>
+                                <input type="text" class="form-control" placeholder="Enter price" id="price" formControlName="price">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
